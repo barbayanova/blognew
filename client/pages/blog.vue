@@ -1,11 +1,11 @@
 <template>
     <h2>Блог</h2>
     <main>
-        <article v-for="post in posts" :key="post.id">
+        <article v-for="(post, index) in posts" :key="post.id">
             <h3> {{ post.title }} </h3>
-            <img :src=base_url+post.img.url alt="Облошка статьи">
+            <img :src=base_url+post.img.url :alt=post.img.alternativeText>
             <p>{{ post.desc }}</p>
-            <NuxtLink to="">Подробнее</NuxtLink>
+            <NuxtLink :to="'/post/' + index">Подробнее</NuxtLink>
         </article>
     </main>
 
@@ -23,7 +23,9 @@ main {
     gap: 10px;
 }
 article {
+    height: 100%;
     background-color: wheat;
+    width:auto;
     padding: 10px;
 }
 </style>
