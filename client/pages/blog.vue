@@ -18,14 +18,33 @@
 </script>
 
 <style scoped>
-main {
+@media screen and (max-width:1024px) {
+    .posts {
+        display: grid;
+        grid-template-columns: (3, 1fr);
+        gap:25px;
+    }
+    
+}
+/* main {
     display: flex;
     gap: 10px;
-}
+} */
 article {
     height: 100%;
     background-color: wheat;
     width:auto;
     padding: 10px;
+}
+article img {
+    width: 100%;
+}
+
+article p {
+height: 100%;
+}
+
+article a {
+    display: block;
 }
 </style>
