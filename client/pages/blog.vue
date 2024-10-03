@@ -3,7 +3,7 @@
     <main>
         <article v-for="(post, index) in posts" :key="post.id">
             <h3> {{ post.title }} </h3>
-            <img :src=base_url+post.img.url :alt=post.img.alternativeText>
+            <img :src="base_url+post.img.url" :alt=post.img.alternativeText>
             <p>{{ post.desc }}</p>
             <NuxtLink :to="'/post/' + index">Подробнее</NuxtLink>
         </article>
@@ -21,28 +21,25 @@
 @media screen and (max-width:1024px) {
     .posts {
         display: grid;
-        grid-template-columns: (3, 1fr);
+        grid-template-rows: (3, 1fr);
         gap:25px;
     }
     
 }
-/* main {
+main {
     display: flex;
     gap: 10px;
-} */
+} 
 article {
     height: 100%;
     background-color: wheat;
-    width:auto;
-    padding: 10px;
+    width:500px;
+    padding: 20px;
 }
 article img {
-    width: 100%;
+    width: 40%;
 }
 
-article p {
-height: 100%;
-}
 
 article a {
     display: block;
