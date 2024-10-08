@@ -18,16 +18,23 @@ import MarkdownIT from "markdown-it"
 const markdown = new MarkdownIT()
 
 const {id} = useRoute().params
-const api = await $fetch('http://localhost:1337/api/posts?populate=*')
-const post = api.data[id]
-const mark = post.body
 
-const base_usr = 'http://localhost:1337'
+const api = await $fetch(`http://localhost:1337/api/posts/${id}?populate=*`)
+const post = api.data;
+const mark = markdown.render(post.body);
+
+const base_url = 'http://localhost:1337'
+
+const apiConfig = await $fetch (`${base_url}/api/congig?`)
+const config = apiConfig.data
+useHead({
+    title: `${post.title} - ${config.title}`
+})
 </script>
 
 <style scoped>
 li::before {
-    content: ">>";
+    content: ">";
     margin-right: 10px;
 }
 li:first-child::before {
@@ -40,5 +47,19 @@ nav ul {
     list-style: none;
     display: flex;
     gap:10px;
+}
+li {
+    text-decoration: none;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+div {
+    padding: 20px;
+    font-size: 20px;
+
 }
 </style>

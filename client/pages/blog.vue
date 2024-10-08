@@ -1,11 +1,11 @@
 <template>
-    <h2>Блог</h2>
+    <h2>Blog</h2>
     <main>
         <article v-for="(post, index) in posts" :key="post.id">
             <h3> {{ post.title }} </h3>
             <img :src="base_url+post.img.url" :alt=post.img.alternativeText>
             <p>{{ post.desc }}</p>
-            <NuxtLink :to="'/post/' + index">Подробнее</NuxtLink>
+            <NuxtLink :to="'/post/' + post.documentId">Подробнее</NuxtLink>
         </article>
     </main>
 
@@ -23,8 +23,17 @@
         display: grid;
         grid-template-rows: (3, 1fr);
         gap:25px;
+       
     }
     
+}
+h2 {text-align: center;
+    padding: 10px;
+
+}
+body {
+    width: auto;
+   
 }
 main {
     display: flex;
@@ -32,12 +41,12 @@ main {
 } 
 article {
     height: 100%;
-    background-color: wheat;
+    background-color: rgb(255, 210, 216);
     width:500px;
     padding: 20px;
 }
 article img {
-    width: 40%;
+    width: 100%;
 }
 
 
