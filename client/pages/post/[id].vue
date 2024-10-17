@@ -2,13 +2,13 @@
     <nav>
         <ul>
             <li><NuxtLink to="/blog">Блог</NuxtLink></li>
-            <li><NuxtLink :to="'/category/'+ post.categories[0].id">{{ post.categories[0].title }}</NuxtLink></li>
+            <li><NuxtLink NuxtLink :style="'background-color:'+post.categories[0].bg" :to="'/category/' + post.categories[0].documentId">{{ post.categories[0].title }}</NuxtLink></li>
             <li>{{ post.title }}</li>
         </ul>
     </nav>
     <main>
         <h1>{{ post.title }}</h1>
-        <img :src=base_usr+post.img.url alt="">
+        <img :src=base_url+post.img.url alt="">
         <div v-html="mark"></div>
     </main>
 </template>
@@ -25,7 +25,7 @@ const mark = markdown.render(post.body);
 
 const base_url = 'http://localhost:1337'
 
-const apiConfig = await $fetch (`${base_url}/api/congig?`)
+const apiConfig = await $fetch (`${base_url}/api/config?`)
 const config = apiConfig.data
 useHead({
     title: `${post.title} - ${config.title}`
