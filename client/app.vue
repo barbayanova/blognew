@@ -18,7 +18,10 @@
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: base+config.favicon.url },
-      ]
+      ],
+      bodyAttrs: {
+        class: 'container mx-auto'
+      },
     })
   </script>
   
